@@ -11,8 +11,9 @@ def create_connection(db_file):
         conn = sqlite3.connect(db_file)
         print(sqlite3.version)
         table_creation = conn. cursor()
-        table_creation.execute(''' CREATE TABLE     client (sender, requester, doc_key, hash, signature,  timestamp , server_key  )   ''')
-        table_creation.execute(''' CREATE TABLE     server(contract, doc_key,hash,signature) ''')
+        table_creation.execute(''' CREATE TABLE     client( name,file )   ''')
+        table_creation.execute(''' CREATE TABLE     server(contract json, doc_key,hash,signature) ''')
+        table_creation.execute(''' CREATE TABLE     secretstore ( key )   ''')
         conn.commit()
     except Error as e:
         print(e)
